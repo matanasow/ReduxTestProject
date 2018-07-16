@@ -1,0 +1,9 @@
+.is-login {
+  width: 30rem;
+  margin: 5rem auto;
+  background-color: #ffffff;
+  padding: 1rem;
+}
+.is-login .input {
+  background-color: #f6f6f6;
+}

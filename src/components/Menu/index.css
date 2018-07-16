@@ -1,0 +1,103 @@
+.menu {
+  background-color: #f2f2ea;
+  position: fixed;
+  top: 3.25rem;
+  bottom: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.menu:hover {
+  overflow-y: auto;
+}
+@media (min-width: 1280px) {
+  .menu {
+    width: 20%;
+  }
+}
+@media (min-width: 1088px) and (max-width: 1279px) {
+  .menu {
+    width: 25%;
+  }
+}
+@media (min-width: 768px) and (max-width: 1087px) {
+  .menu {
+    width: 30%;
+  }
+}
+@media (max-width: 767px) {
+  .menu .menu-icon {
+    border-right-width: 0px !important;
+  }
+  .menu .menu-text {
+    width: 0;
+    padding: 0;
+  }
+}
+.menu-label:not(:last-child), .menu-label:not(:first-child) {
+  padding: 1em;
+}
+.menu-list a {
+  border-radius: 0;
+  padding: 0;
+  border-bottom: 1px solid #e8e8de;
+}
+.menu-list a.is-active {
+  background-color: #dd6161;
+  border-color: transparent;
+}
+.menu-list a div {
+  display: inline-block;
+  padding: 1em;
+}
+.menu-list a div.has-bg {
+  padding: 1em 0em;
+  width: 0.5em;
+}
+.menu-list a div.menu-icon {
+  border-right: 1px solid #e8e8de;
+}
+.menu-list a.is-active div.menu-icon {
+  border-right: 1px solid transparent;
+}
+.menu-list a div.menu-icon span.icon {
+  height: 1em;
+}
+
+/* colored */
+
+.has-border-blue {
+  border-left: 0.25em solid #5fabdf;
+  /* background-color: #5fabdf; */
+}
+.has-border-green {
+  border-left: 0.25em solid #6ec580;
+  /* background-color: #6ec580; */
+}
+.has-border-purple {
+  border-left: 0.25em solid #9d62d8;
+  /* background-color: #9d62d8; */
+}
+.has-border-violet {
+  border-left: 0.25em solid #6470dc;
+  /* background-color: #6470dc; */
+}
+.has-border-orange {
+  border-left: 0.25em solid #dea560;
+  /* background-color: #dea560; */
+}
+.has-border-brown {
+  border-left: 0.25em solid #aa6e6e;
+  /* background-color: #aa6e6e; */
+}
+.has-border-marine {
+  border-left: 0.25em solid #6ea997;
+  /* background-color: #6ea997; */
+}
+.has-border-gray {
+  border-left: 0.25em solid #737172;
+  /* background-color: #737172; */
+}
+.has-border-yellow {
+  border-left: 0.25em solid #b1bd10;
+  /* background-color: #b1bd10; */
+}
