@@ -19,6 +19,7 @@ import { connect } from 'react-redux';
 // class InputTextBox extends TextBox {
 //   type = 'text'
 // }
+//dddd
 
 const TextBox = (props) => {
   return <input {...props} />
