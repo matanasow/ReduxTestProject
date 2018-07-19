@@ -1,6 +1,7 @@
 const defaultState = {
   userId: null,
-  sessionId: null
+	sessionId: null,
+  error: null	
 };
 
 export default (state = defaultState, { type, payload }) => {
@@ -11,6 +12,32 @@ export default (state = defaultState, { type, payload }) => {
 				...state,
 				userId: payload.userId,
         sessionId: payload.sessionId
+			};
+
+			case `EXECUTE_LOGIN_USER`:
+			return {
+				...state,
+        sessionId: payload.userInfo.sessionId
+			};
+
+			case `LOGOUT_USER`:
+			return {
+				...state,
+        sessionId: null
+			};
+
+			case `FETCH_USER_SUCCESS`:
+			return {
+				...state,
+				sessionId: payload.userInfo.sessionId,
+				error: null
+			};
+
+			case `FETCH_USER_FAILURE`:
+			return {
+				...state,
+				sessionId: null,
+				error: payload.error
 			};
 
 		default:

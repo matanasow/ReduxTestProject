@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { setUser } from './../../redux/actions/';
+import { setUser, loadUser } from './../../redux/actions/';
 import "./index.css";
 
 class Login extends Component {
@@ -31,32 +31,30 @@ class Login extends Component {
   login = event => {
     event.preventDefault();
     const userHashPass = this.hashingParam(this.state.password);
-    fetch(
-      "http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login",
-      {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          username: this.state.email,
-          password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
-        })
-      }
-    ).then(res => res.json())
-    .then(
-      result => {
-        // this.setState({
-        //   sessionId: result.sessionId
-        // });
-        // this.props.executeLogin()
-        this.props.setUser(result);
-        localStorage.setItem('sessionId', result.sessionId)
-      },
-      error => {
-        this.setState({
-          errorMessage: error.ex.message
-        })
-      }
-    );
+    debugger
+    this.props.dispatch(loadUser())
+    // fetch(
+    //   "http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login",
+    //   {
+    //     method: "post",
+    //     headers: { "Content-Type": "application/json" },
+    //     body: JSON.stringify({
+    //       username: this.state.email,
+    //       password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
+    //     })
+    //   }
+    // ).then(res => res.json())
+    // .then(
+    //   result => {
+    //     this.props.setUser(result);
+    //     localStorage.setItem('sessionId', result.sessionId)
+    //   },
+    //   error => {
+    //     this.setState({
+    //       errorMessage: error.ex.message
+    //     })
+    //   }
+    // );
   };
 
   handleEmailChange = event => {
@@ -68,7 +66,7 @@ class Login extends Component {
 
   render() {
     console.log(this.props);
-    const { errorMessage } = this.state.errorMessage;
+    // const { error } = this.props.error;
     return (
       <div className="is-login has-shadows">
         <div className="field">
@@ -113,11 +111,11 @@ class Login extends Component {
             </button>
           </p>
         </div>
-        {errorMessage !== "" && (
+        {/* {error !== "" && (
           <div className="field">
-            <span className="has-text-danger">{errorMessage}</span>
+            <span className="has-text-danger">{error.ex.message}</span>
           </div>
-        )}
+        )} */}
       </div>
     );
   }
@@ -125,14 +123,16 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (sessionId) => dispatch(setUser(sessionId))
+    setUser: (sessionId) => dispatch(setUser(sessionId)),
+    fetchUser: (sessionId) => dispatch(loadUser(sessionId))
   };
 };
 
 export default connect(
   (state) => {
     return {
-      sessionId: state.session.sessionId
+      sessionId: state.session.sessionId,
+      error: state.session.error
     };
   },
   mapDispatchToProps
