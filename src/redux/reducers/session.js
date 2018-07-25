@@ -40,6 +40,12 @@ export default (state = defaultState, { type, payload }) => {
 				error: payload.error
 			};
 
+			case 'SHOW_NAME':
+			return {
+				...state,
+				name: payload.name
+			}
+
 		default:
 		 	return state;
   }

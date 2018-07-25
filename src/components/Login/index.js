@@ -32,7 +32,7 @@ class Login extends Component {
     event.preventDefault();
     const userHashPass = this.hashingParam(this.state.password);
     debugger
-    this.props.dispatch(loadUser())
+    this.props.loadUser(userHashPass)
     // fetch(
     //   "http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login",
     //   {
@@ -124,7 +124,14 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     setUser: (sessionId) => dispatch(setUser(sessionId)),
-    fetchUser: (sessionId) => dispatch(loadUser(sessionId))
+    loadUser: (userHashPass) => dispatch({
+      type: 'async_action',
+      payload: {
+          url: 123,
+          params: userHashPass,
+          onsuccess: 
+      }
+    })
   };
 };
 

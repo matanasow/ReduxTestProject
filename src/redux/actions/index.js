@@ -32,6 +32,13 @@ export const fetchUserError = error => ({
         error
     }
 });
+export const showName = name => {
+    return{
+        type: 'SHOW_NAME',
+        
+
+    }
+}
 
 export function postUser() {
     return fetch('http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login', {
