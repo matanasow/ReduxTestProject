@@ -129,7 +129,7 @@ const mapDispatchToProps = (dispatch) => {
       payload: {
           url: 123,
           params: userHashPass,
-          onsuccess: 
+          // onsuccess: showSomething
       }
     })
   };
