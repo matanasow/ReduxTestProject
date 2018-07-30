@@ -1,4 +1,4 @@
 import { async } from './asyncs'
-const middlewares = [async(fetch())];
+const middlewares = [async];
 
 export default middlewares;
