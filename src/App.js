@@ -21,21 +21,21 @@ import { connect } from 'react-redux';
 // }
 //dddd
 
-const TextBox = (props) => {
-  return <input {...props} />
-}
+// const TextBox = (props) => {
+//   return <input {...props} />
+// }
 
-const PassTextBox = () => {
-  return <TextBox type="password" />
-}
+// const PassTextBox = () => {
+//   return <TextBox type="password" />
+// }
 
-const InputTextBox = () => {
-  return <TextBox type="input" />
-}
+// const InputTextBox = () => {
+//   return <TextBox type="input" />
+// }
 
-const BtnTextBox = () => {
-  return <TextBox type="button" />
-}
+// const BtnTextBox = () => {
+//   return <TextBox type="button" />
+// }
 
 class App extends Component {
   state = {
@@ -49,23 +49,21 @@ class App extends Component {
   }
   
   logout = () => {
+    debugger
     this.setState({
       sessionId: null
     });
   }
-
-
-
+  
   render() {
-    //if (this.props.sessionId === null) return <Login executeLogin={this.executeLogin} />;
+    if (this.props.sessionId === null) return <Login executeLogin={this.executeLogin} />;
     return (
       <Fragment>
-        <InputTextBox />
-        {/* <Navbar executeLogout={this.logout} />
+        <Navbar executeLogout={this.logout} />
         <Menu />
         <Content>
           <Routes />
-        </Content> */}
+        </Content>
       </Fragment>
     );
   }
