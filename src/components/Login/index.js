@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { setUser, loadUser } from './../../redux/actions/';
+import { loadUser } from './../../redux/actions/index';
 import "./index.css";
 
 class Login extends Component {
@@ -123,13 +123,12 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    setUser: (sessionId) => dispatch(setUser(sessionId)),
+    // setUser: (sessionId) => dispatch(setUser(sessionId)),
     loadUser: (userHashPass) => dispatch({
       type: 'async_action',
       payload: {
           url: 123,
-          params: userHashPass,
-          onsuccess: 
+          params: userHashPass
       }
     })
   };
