@@ -17,7 +17,7 @@ export default (state = defaultState, { type, payload }) => {
 			case `EXECUTE_LOGIN_USER`:
 			return {
 				...state,
-        sessionId: payload.userInfo.sessionId
+        sessionId: payload.sessionId
 			};
 
 			case `LOGOUT_USER`:
@@ -29,7 +29,7 @@ export default (state = defaultState, { type, payload }) => {
 			case `FETCH_USER_SUCCESS`:
 			return {
 				...state,
-				sessionId: payload.userInfo.sessionId,
+				sessionId: payload.sessionId,
 				error: null
 			};
 

@@ -32,47 +32,40 @@ export const fetchUserError = error => ({
         error
     }
 });
-export const showName = name => {
-    return{
-        type: 'SHOW_NAME',
-        
 
-    }
-}
+// export function postUser() {
+//     return fetch('http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login', {
+//             method: "post",
+//             headers: {
+//                 "Content-Type": "application/json"
+//             },
+//             body: JSON.stringify({
+//                 username: this.state.email,
+//                 password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
+//             })
+//         })
+//         .then(response => {
+//             debugger
+//             return response.json();
+//         })
+//         .then(
+//             result => {
+//                 localStorage.setItem('sessionId', result.sessionId)
+//             }
+//         ),
+//         error => {
+//             return error;
+//         };
+// }
 
-export function postUser() {
-    return fetch('http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login', {
-            method: "post",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                username: this.state.email,
-                password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
-            })
-        })
-        .then(response => {
-            debugger
-            return response.json();
-        })
-        .then(
-            result => {
-                localStorage.setItem('sessionId', result.sessionId)
-            }
-        ),
-        error => {
-            return error;
-        };
-}
-
-export function loadUser() {
-    return dispatch => {
-        return postUser().then(user => {
-            debugger
-                dispatch(fetchUserSuccess(user));
-            }),
-            error => {
-                return error
-            }
-    }
-}
+// export function loadUser() {
+//     return dispatch => {
+//         return postUser().then(user => {
+//             debugger
+//                 dispatch(fetchUserSuccess(user));
+//             }),
+//             error => {
+//                 return error
+//             }
+//     }
+// }
