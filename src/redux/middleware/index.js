@@ -1,4 +1,7 @@
 import { async } from './asyncs'
-const middlewares = [async];
+import { fetchUser } from './login'
+import { api } from './api'
+
+const middlewares = [async, fetchUser, api];
 
 export default middlewares;

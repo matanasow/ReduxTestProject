@@ -9,9 +9,11 @@ export const fetchUser =  ({dispatch}) => (next) => (action) => {
     if (action.type === FETCH_USER_SUCCESS) {
         debugger
         dispatch(loginUser(action.payload));
-        dispatch(apiRequest('POST', URL, null, FETCH_USER_SUCCESS, FETCH_USER_ERROR));
+        dispatch(apiRequest('POST', URL, {username: action.payload.username, password: action.payload.password}, FETCH_USER_SUCCESS, FETCH_USER_ERROR));
         // fImpl(action.payload.url);
     } else {
         next(action);
     }
 }
+
+export const loginMdl = [fetchUser];

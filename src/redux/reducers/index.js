@@ -1,10 +1,13 @@
 import { combineReducers } from 'redux';
 import session from './session';
 import data from './data'
+import loginReducer from './login'
+
 
 export default combineReducers({
   session,
-  data
+  data,
+  loginReducer
 });
 // const bpa = [{id:1},{id:2},{id:3},{id:4}];
 

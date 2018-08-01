@@ -21,6 +21,7 @@ import { connect } from 'react-redux';
 // }
 
 // const TextBox = (props) => {
+  
 //   return <input {...props} />
 // }
 
@@ -55,7 +56,7 @@ class App extends Component {
   }
   
   render() {
-    if (this.props.sessionId === null) return <Login executeLogin={this.executeLogin} />;
+    if (this.props.sessionId === null || undefined) return <Login executeLogin={this.executeLogin} />;
     return (
       <Fragment>
         <Navbar executeLogout={this.logout} />
