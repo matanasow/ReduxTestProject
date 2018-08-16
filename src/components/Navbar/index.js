@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './index.css';
+import { connect } from 'react-redux';
+import { logoutUser } from './../../redux/actions/login';
 import ActiveRouteLink from '../../helpers/ActiveRouteLink';
 
 const leftMenuItems = ['left-1'];
@@ -39,7 +41,7 @@ class Navbar extends Component {
                 <a className="navbar-item">profile</a>
                 <a className="navbar-item">settings</a>
                 <hr className="navbar-divider" />
-                <a className="navbar-item is-active" onClick={this.props.executeLogout}>logout</a>
+                <a className="navbar-item is-active" onClick={this.props.logout}>logout</a>
               </div>
             </div>
           </div>
@@ -49,4 +51,17 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logoutUser: () => dispatch(logoutUser())
+  }
+};
+
+export default connect(
+  (state) => {
+    return {
+      sessionId: state.sessionId
+    };
+  },
+  mapDispatchToProps
+)(Navbar);

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from 'react-redux';
-import { loadUser } from './../../redux/actions/index';
+import { loginUser } from './../../redux/actions/login';
 import "./index.css";
 
 class Login extends Component {
@@ -29,9 +29,11 @@ class Login extends Component {
   };
 
   login = event => {
+    debugger
     event.preventDefault();
     const userHashPass = this.hashingParam(this.state.password);
-    this.props.loadUser(this.state.email)
+    loginUser({email: this.state.email, password: this.state.password})
+
     // fetch(
     //   "http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login",
     //   {
@@ -64,8 +66,9 @@ class Login extends Component {
   };
 
   render() {
-    console.log(this.props);
+    debugger
     // const { error } = this.props.error;
+    console.log(this.state)
     return (
       <div className="is-login has-shadows">
         <div className="field">
@@ -123,13 +126,7 @@ class Login extends Component {
 const mapDispatchToProps = (dispatch) => {
   return {
     // setUser: (sessionId) => dispatch(setUser(sessionId)),
-    loadUser: (email) => dispatch({
-      type: 'FETCH_USER_SUCCESS',
-      payload: {
-        username: email,
-        password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
-      }
-    })
+    loginUser: ({email, password}) => dispatch(loginUser({email,password}))
   };
 };
 
@@ -137,6 +134,7 @@ export default connect(
   (state) => {
     return {
       sessionId: state.session.sessionId,
+      email: state.email,
       error: state.session.error
     };
   },

@@ -43,23 +43,26 @@ class App extends Component {
   }
 
   executeLogin = (param) => {
+    debugger
     this.setState({
       sessionId: param
     });
   }
-  
+
   logout = () => {
     debugger
     this.setState({
       sessionId: null
     });
+    localStorage.setItem('sessionId', null)
   }
   
   render() {
-    if (this.props.sessionId === null || undefined) return <Login executeLogin={this.executeLogin} />;
+    if (localStorage.getItem.sessionId !== null || undefined) return <Login login={this.executeLogin} />;
     return (
+
       <Fragment>
-        <Navbar executeLogout={this.logout} />
+        <Navbar logout={this.logout} />
         <Menu />
         <Content>
           <Routes />

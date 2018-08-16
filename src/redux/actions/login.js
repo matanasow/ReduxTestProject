@@ -8,15 +8,14 @@ export const loginUser = data => ({
     payload: data
 })
 
-export const logoutUser = user => ({
-    type: LOGOUT_USER
+export const logoutUser = () => ({
+    type: LOGOUT_USER,
+    sessionId: null
 })
 
-export const fetchUserSuccess = userInfo => ({
+export const fetchUserSuccess = data => ({
     type: FETCH_USER_SUCCESS,
-    payload: {
-        userInfo
-    }
+    payload: data
 });
 
 export const fetchUserError = error => ({
