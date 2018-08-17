@@ -2,32 +2,26 @@ import {
   FETCH_USER_ERROR,
   EXECUTE_LOGIN_USER,
   FETCH_USER_SUCCESS,
-  LOGOUT_USER
-} from '../actions/login';
+  LOGOUT_USER_SUCCESS} from '../actions/login';
 
 const defaultState = {
-  userId: null,
-  sessionId: null,
-  error: null
+	sessionId: null,
+  error: null	
 };
 
-
-export default (state = defaultState, {
-  type,
-  payload
-}) => {
-  debugger
+export default (state = defaultState, { type, payload }) => {
   switch (type) {
     case EXECUTE_LOGIN_USER:
+    console.log('REDUCER IN')
       return {
         ...state,
-        email: payload.email,
-        password: payload.password
+        email: payload.data.email,
+        password: payload.data.password
       }
     case FETCH_USER_SUCCESS:
       return {
         ...state,
-        sessionId: payload.sessionId,
+        sessionId: payload.data.sessionId,
         error: null
       };
     case FETCH_USER_ERROR:
@@ -36,7 +30,7 @@ export default (state = defaultState, {
         sessionId: null,
         error: payload.error
       };
-    case LOGOUT_USER:
+    case LOGOUT_USER_SUCCESS:
       return {
         ...state,
         sessionId: null,

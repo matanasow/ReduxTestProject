@@ -29,33 +29,9 @@ class Login extends Component {
   };
 
   login = event => {
-    debugger
     event.preventDefault();
     const userHashPass = this.hashingParam(this.state.password);
-    loginUser({email: this.state.email, password: this.state.password})
-
-    // fetch(
-    //   "http://external.euroins.bg/nef4/service232/api/Users/Any?language=bg&method=Login",
-    //   {
-    //     method: "post",
-    //     headers: { "Content-Type": "application/json" },
-    //     body: JSON.stringify({
-    //       username: this.state.email,
-    //       password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
-    //     })
-    //   }
-    // ).then(res => res.json())
-    // .then(
-    //   result => {
-    //     this.props.setUser(result);
-    //     localStorage.setItem('sessionId', result.sessionId)
-    //   },
-    //   error => {
-    //     this.setState({
-    //       errorMessage: error.ex.message
-    //     })
-    //   }
-    // );
+    this.props.loginUser({email: this.state.email, password: this.state.password})
   };
 
   handleEmailChange = event => {
@@ -66,7 +42,6 @@ class Login extends Component {
   };
 
   render() {
-    debugger
     // const { error } = this.props.error;
     console.log(this.state)
     return (
@@ -125,7 +100,6 @@ class Login extends Component {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    // setUser: (sessionId) => dispatch(setUser(sessionId)),
     loginUser: ({email, password}) => dispatch(loginUser({email,password}))
   };
 };
@@ -133,9 +107,9 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(
   (state) => {
     return {
-      sessionId: state.session.sessionId,
+      sessionId: state.sessionId,
       email: state.email,
-      error: state.session.error
+      error: state.error
     };
   },
   mapDispatchToProps

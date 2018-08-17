@@ -5,9 +5,9 @@ import login from './login'
 
 
 export default combineReducers({
+  login,
   session,
-  data,
-  login
+  data
 });
 // const bpa = [{id:1},{id:2},{id:3},{id:4}];
 

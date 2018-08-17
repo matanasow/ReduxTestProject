@@ -14,6 +14,12 @@ class Navbar extends Component {
     this.menuItem.classList.toggle('is-active');
   }
 
+  logoutUser = event => {
+    event.preventDefault();
+    this.props.logoutUser()
+
+  }
+
   render() {
     return (
       <nav className="navbar is-fixed-top is-dark has-shadows" ref={(el) => { this.navItem = el; }}>
@@ -41,7 +47,7 @@ class Navbar extends Component {
                 <a className="navbar-item">profile</a>
                 <a className="navbar-item">settings</a>
                 <hr className="navbar-divider" />
-                <a className="navbar-item is-active" onClick={this.props.logout}>logout</a>
+                <a className="navbar-item is-active" onClick={this.logoutUser}>logout</a>
               </div>
             </div>
           </div>

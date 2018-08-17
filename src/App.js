@@ -58,7 +58,7 @@ class App extends Component {
   }
   
   render() {
-    if (localStorage.getItem.sessionId !== null || undefined) return <Login login={this.executeLogin} />;
+    if (this.props.sessionId === null) return <Login login={this.executeLogin} />;
     return (
 
       <Fragment>
@@ -76,6 +76,6 @@ class App extends Component {
 
 export default compose(
   connect(
-    ({ session: { sessionId } }) => ({ sessionId })
+    ({ login: { sessionId } }) => ({ sessionId })
   )
 )(App);
