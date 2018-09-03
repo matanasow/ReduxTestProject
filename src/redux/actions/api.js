@@ -1,7 +1,14 @@
-export const API_REQUEST = '[app] API_request';
+export const API_POST_REQUEST = '[app] API_POST_request';
+export const API_GET_REQUEST = '[app] API_GET_request';
 
-export const apiRequest = (method, url, body ,onSuccess, onError) => ({
-    type: API_REQUEST,
+export const apiPostRequest = (url, body, onSuccess, onError) => ({
+    type: API_POST_REQUEST,
     payload: body,
-    meta: {method, url, onSuccess, onError}
+    meta: {url, onSuccess, onError}
+})
+
+export const apiGetRequest = (url, params, onSuccess, onError) => ({
+    type: API_GET_REQUEST,
+    payload: params,
+    meta: {url, onSuccess, onError}
 })

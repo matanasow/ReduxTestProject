@@ -23,7 +23,5 @@ export const fetchUserSuccess = data => ({
 
 export const fetchUserError = error => ({
     type: FETCH_USER_ERROR,
-    payload: {
-        error
-    }
+    payload: error
 });

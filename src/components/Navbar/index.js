@@ -17,7 +17,7 @@ class Navbar extends Component {
   logoutUser = event => {
     event.preventDefault();
     this.props.logoutUser()
-
+    localStorage.clear();
   }
 
   render() {

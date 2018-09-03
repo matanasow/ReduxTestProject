@@ -8,7 +8,7 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
-    errorMessage: ""
+    error: {message: null}
   };
 
   hashingParam = param => {
@@ -32,6 +32,7 @@ class Login extends Component {
     event.preventDefault();
     const userHashPass = this.hashingParam(this.state.password);
     this.props.loginUser({email: this.state.email, password: this.state.password})
+    console.log(this.props)
   };
 
   handleEmailChange = event => {
@@ -42,8 +43,7 @@ class Login extends Component {
   };
 
   render() {
-    // const { error } = this.props.error;
-    console.log(this.state)
+    const error = this.props.error;
     return (
       <div className="is-login has-shadows">
         <div className="field">
@@ -84,15 +84,15 @@ class Login extends Component {
               className="button is-link is-fullwidth transitioned"
               onClick={this.login}
             >
-              login
+              Login
             </button>
           </p>
         </div>
-        {/* {error !== "" && (
+        {error !== "" && (
           <div className="field">
-            <span className="has-text-danger">{error.ex.message}</span>
+            <span className="has-text-danger">{error.message}</span>
           </div>
-        )} */}
+        )}
       </div>
     );
   }
