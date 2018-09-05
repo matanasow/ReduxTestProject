@@ -18,6 +18,7 @@ export const fetchUser = ({dispatch}) => (next) => (action) => {
                 username: action.payload.email,
                 password: "0xa428e3fcc1f49164508bcdc08cfc7b43"
             }, FETCH_USER_SUCCESS, FETCH_USER_ERROR))
+                
             // .then((response) => {
             //     console.log(response)
             //     dispatch(fetchUserSuccess(response))

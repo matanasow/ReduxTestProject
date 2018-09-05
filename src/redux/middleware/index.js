@@ -1,7 +1,7 @@
-import { async } from './asyncs'
+import { setLocalStorageProps } from './localStorage'
 import { fetchUser } from './login'
 import { apiPost } from './api'
 
-const middlewares = [async, fetchUser, apiPost];
+const middlewares = [setLocalStorageProps, fetchUser, apiPost];
 
 export default middlewares;

@@ -6,47 +6,18 @@ import Content from './components/Content'
 import Routes from './routes'
 import compose from './helpers/compose';
 import { connect } from 'react-redux';
-// import { withRouter } from 'react-router-dom';
-
-// class TextBox extends Component {
-//   render() {
-//     return (
-//       <input type={this.type} />
-//     )
-//   }
-// }
-
-// class InputTextBox extends TextBox {
-//   type = 'text'
-// }
-
-// const TextBox = (props) => {
-  
-//   return <input {...props} />
-// }
-
-// const PassTextBox = () => {
-//   return <TextBox type="password" />
-// }
-
-// const InputTextBox = () => {
-//   return <TextBox type="input" />
-// }
-
-// const BtnTextBox = () => {
-//   return <TextBox type="button" />
-// }
 
 class App extends Component {
   state = {
     sessionId: null
   }
 
-  executeLogin = (param) => {
+  login = (param) => {
     debugger
     this.setState({
       sessionId: param
     });
+    localStorage.setItem('sessionId', param)
   }
 
   logout = () => {
@@ -54,15 +25,14 @@ class App extends Component {
     this.setState({
       sessionId: null
     });
-    localStorage.setItem('sessionId', null)
   }
-  
+
   render() {
-    if (this.props.sessionId === null) return <Login login={this.executeLogin} />;
+    if (this.props.sessionId === null) return <Login login={this.login} />;
     return (
 
       <Fragment>
-        <Navbar logout={this.logout} />
+        <Navbar logoutUser={this.logout} />
         <Menu />
         <Content>
           <Routes />

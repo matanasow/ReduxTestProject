@@ -8,7 +8,7 @@ class Login extends Component {
   state = {
     email: "",
     password: "",
-    error: {message: null}
+    error: null
   };
 
   hashingParam = param => {
@@ -32,7 +32,6 @@ class Login extends Component {
     event.preventDefault();
     const userHashPass = this.hashingParam(this.state.password);
     this.props.loginUser({email: this.state.email, password: this.state.password})
-    console.log(this.props)
   };
 
   handleEmailChange = event => {
@@ -80,15 +79,16 @@ class Login extends Component {
         </div>
         <div className="field">
           <p className="control">
-            <button
+            <button            
               className="button is-link is-fullwidth transitioned"
               onClick={this.login}
             >
+            <i className="fa fa-spinner fa-spin"></i>
               Login
             </button>
           </p>
         </div>
-        {error !== "" && (
+        {error !== null && (
           <div className="field">
             <span className="has-text-danger">{error.message}</span>
           </div>
@@ -108,8 +108,8 @@ export default connect(
   (state) => {
     return {
       sessionId: state.sessionId,
-      email: state.email,
-      error: state.error
+      userId: state.login.userId,
+      error: state.login.error
     };
   },
   mapDispatchToProps

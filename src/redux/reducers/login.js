@@ -12,7 +12,6 @@ const defaultState = {
 export default (state = defaultState, { type, payload }) => {
   switch (type) {
     case EXECUTE_LOGIN_USER:
-    console.log('REDUCER IN')
       return {
         ...state,
         email: payload.data.email,
@@ -22,6 +21,7 @@ export default (state = defaultState, { type, payload }) => {
       return {
         ...state,
         sessionId: payload.data.sessionId,
+        userId: payload.data.userId,
         error: null
       };
     case FETCH_USER_ERROR:
